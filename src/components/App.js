@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import LastStatus from "./LastStatus";
 
 class App extends Component {
   render() {
     return (
       <div>
-        DEVELOPING...
+        <LastStatus timestamp={0}/>
       </div>
     );
   }
