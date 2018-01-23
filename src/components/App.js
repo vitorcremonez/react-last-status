@@ -11,7 +11,7 @@ class App extends Component {
             now: moment().valueOf(),
         }
     }
-    
+
     render() {
         return (
             <div>
@@ -23,7 +23,7 @@ class App extends Component {
                 </div>
                 <br/>
                 <br/>
-                status: <LastStatus timestamp={parseInt(this.state.timestamp)}/>
+                last seen <LastStatus timestamp={parseInt(this.state.timestamp)} locale={'pt-BR'}/>
             </div>
         );
     }

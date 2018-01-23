@@ -29,6 +29,12 @@ const languages = {
             'november',
             'december',
         ],
+        messages: {
+            online: 'online',
+            yesterday: 'yesterday',
+            thisweek: 'weekdays[1] at HH:mm',
+            later: 'DD/MM/YYYY at HH:mm',
+        }
     },
     'pt-BR': {
         online: 'online',
