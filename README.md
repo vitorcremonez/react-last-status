@@ -5,13 +5,17 @@
 React component that shows the last status of user.
 Add your own last seen status to your project.
 
-| elapsed time | status output | props | default | 
+| elapsed time | status output example | props | default | 
 | :---: | :---: | :---: | :---: |
-| max last `limiarOnline` ms | online | online | `online` |
-| max same day | today at 00:00 | today | `today at HH:mm` |
-| max 1 day ago | yesterday at 00:00 | yesterday | `yesterday at HH:mm` |
-| max 1 week ago | sunday at 00:00 | lastWeek | `WW at HH:mm` |
-| before | 01/01/2018 at 00:00 | before | `MM/DD/YYYY at HH:mm` |
+| max last `nowLimiar` ms | online | now | `[online]` |
+| max same day | today at 00:00 | sameDay | `[today] [at] HH:mm` |
+| max 1 day ago | yesterday at 00:00 | lastDay | `[yesterday] [at] HH:mm` |
+| max 1 week ago | sunday at 00:00 | lastWeek | `dddd [at] HH:mm` |
+| before | 01/01/2018 at 00:00 | sameElse | `L [at] HH:mm` |
+
+
+## Auto Refresh
+The react-last-status makes auto refreshes automatically.
 
 ## Demo
 Lorem Ipsum...
@@ -32,7 +36,6 @@ Add component with respective props:
 ```js
 <LastStatus timestamp={timestamp}/>
 ```
-
 ## Props
 ### timestamp
 Lorem Ipsum...
@@ -52,7 +55,7 @@ Lorem Ipsum...
 Lorem Ipsum...
 
 ## Languages
-Setting the language of component with props. 
+Set the language of component with `locale` props. 
 
 ```js
 <LastStatus locale={'pt-BR'}/>
@@ -60,5 +63,5 @@ Setting the language of component with props.
 
 | locale | language |
 | :---: | :---: |
-| es-US | english |
+| es-US *default* | english |
 | pt-BR | portuguese (Brazil) |

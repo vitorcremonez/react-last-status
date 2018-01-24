@@ -1,11 +1,22 @@
 import React, {Component} from 'react';
-import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 class LastStatus extends Component {
+    static defaultProps = {
+        locale: 'en',
+        nowLimiar: 30000, //ms
+        refreshInterval: 15000, //ms
+    };
+
     constructor(props) {
         super(props);
+        this.dictionary = this.props.languages[this.props.locale];
+    }
+
+    componentWillUpdate() {
         this.dictionary = this.props.languages[this.props.locale];
     }
 
@@ -14,44 +25,28 @@ class LastStatus extends Component {
             () => {
                 this.forceUpdate()
             },
-            this.props.liveInterval
+            this.props.refreshInterval
         );
-    }
-
-    fullDate(timestamp) {
-        const weekday = this.dictionary.weekdays[moment(timestamp).format('d')];
-        const month = this.dictionary.months[moment(timestamp).format('M') - 1];
-        return moment(timestamp).format(`[${weekday}], DD [de] [${month}] [de] YYYY [às] HH:mm`);
-    }
-
-    lastStatus(timestamp) {
-        const weekday = this.dictionary.weekdays[moment(timestamp).format('d')];
-        const elapsedDays = moment().diff(moment(timestamp).startOf('day'), 'days');
-        const elapsedMilliseconds = moment().diff(timestamp, 'milliseconds');
-        if (elapsedMilliseconds < 0) {
-            return 'invalid elapsed milliseconds';
-        } else if (elapsedMilliseconds < this.props.onlineLimiar) {
-            return this.dictionary.online;
-        } else if (elapsedDays < 1) {
-            return moment(timestamp).format(`[${this.dictionary.today}] [${this.dictionary.at}] HH:mm`);
-        } else if (elapsedDays < 2) {
-            return moment(timestamp).format(`[${this.dictionary.yesterday}] [${this.dictionary.at}] HH:mm`);
-        } else if (elapsedDays < 7) {
-            return moment(timestamp).format(`[${weekday}] [${this.dictionary.at}] HH:mm`);
-        } else {
-            return moment(timestamp).format(`DD/MM/YYYY [${this.dictionary.at}] HH:mm`);
-        }
     }
 
     render() {
         const timestamp = this.props.timestamp;
         return (
-            <span title={ this.fullDate(timestamp) }>
-                { this.lastStatus(timestamp) }
-                <br/>
-                { moment(timestamp).format('LLLL') }
-                <br/>
-                { this.props.live ? 'live on' : 'live off' }
+            <span title={ moment(timestamp).locale(this.props.locale).format('LLLL').toLowerCase() }>
+                {
+                    moment(timestamp).locale(this.props.locale).calendar(null, {
+                        sameDay: (now) => {
+                            if (!moment(timestamp).locale(this.props.locale).isBefore(now - this.props.nowLimiar)) {
+                                return this.dictionary ? this.dictionary.now : '[online]';
+                            } else {
+                                return this.dictionary ? this.dictionary.sameDay : null;
+                            }
+                        },
+                        lastDay: this.dictionary ? this.dictionary.lastDay : null,
+                        lastWeek: this.dictionary ? this.dictionary.lastWeek : null,
+                        sameElse: this.dictionary ? this.dictionary.sameElse : null,
+                    }).toLowerCase()
+                }
             </span>
         );
     }
@@ -62,12 +57,5 @@ function mapStateToProps(state) {
         languages: state.languages,
     }
 }
-
-LastStatus.defaultProps = {
-    locale: 'es-US',
-    onlineLimiar: 30000,
-    live: true,
-    liveInterval: 15000,
-};
 
 export default connect(mapStateToProps)(LastStatus);
