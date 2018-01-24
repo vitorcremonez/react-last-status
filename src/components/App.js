@@ -3,13 +3,14 @@ import LastStatus from "./LastStatus";
 import moment from 'moment';
 
 class App extends Component {
-    TIMESTAMP = "TIMESTAMP";
-    LOCALE = "LOCALE";
-    NOWLIMIAR = "NOWLIMIAR";
-    REFRESHINTERVAL = "REFRESHINTERVAL";
-
     constructor(props) {
         super(props);
+
+        this.TIMESTAMP = "TIMESTAMP";
+        this.LOCALE = "LOCALE";
+        this.NOWLIMIAR = "NOWLIMIAR";
+        this.REFRESHINTERVAL = "REFRESHINTERVAL";
+
         this.state = {
             timestamp: 0,
             min: moment().subtract(2, 'week').valueOf(),

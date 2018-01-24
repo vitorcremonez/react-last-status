@@ -5,12 +5,6 @@ import moment from 'moment';
 import 'moment/locale/pt-br';
 
 class LastStatus extends Component {
-    static defaultProps = {
-        locale: 'en',
-        nowLimiar: 30000, //ms
-        refreshInterval: 15000, //ms
-    };
-
     constructor(props) {
         super(props);
         this.dictionary = this.props.languages[this.props.locale];
@@ -51,6 +45,12 @@ class LastStatus extends Component {
         );
     }
 }
+
+LastStatus.defaultProps = {
+    locale: 'en',
+    nowLimiar: 30000, //ms
+    refreshInterval: 15000, //ms
+};
 
 function mapStateToProps(state) {
     return {
