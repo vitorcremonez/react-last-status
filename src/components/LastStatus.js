@@ -37,14 +37,14 @@ class LastStatus extends Component {
                     moment(timestamp).locale(this.props.locale).calendar(null, {
                         sameDay: (now) => {
                             if (!moment(timestamp).locale(this.props.locale).isBefore(now - this.props.nowLimiar)) {
-                                return this.dictionary ? this.dictionary.now : '[online]';
+                                return this.props.now ? this.props.now : (this.dictionary ? this.dictionary.now : '[online]');
                             } else {
-                                return this.dictionary ? this.dictionary.sameDay : null;
+                                return this.props.sameDay ? this.props.sameDay : (this.dictionary ? this.dictionary.sameDay : null);
                             }
                         },
-                        lastDay: this.dictionary ? this.dictionary.lastDay : null,
-                        lastWeek: this.dictionary ? this.dictionary.lastWeek : null,
-                        sameElse: this.dictionary ? this.dictionary.sameElse : null,
+                        lastDay: this.props.lastDay ? this.props.lastDay : (this.dictionary ? this.dictionary.lastDay : null),
+                        lastWeek: this.props.lastWeek ? this.props.lastWeek : (this.dictionary ? this.dictionary.lastWeek : null),
+                        sameElse: this.props.sameElse ? this.props.sameElse : (this.dictionary ? this.dictionary.sameElse : null),
                     }).toLowerCase()
                 }
             </span>
