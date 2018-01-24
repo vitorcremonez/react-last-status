@@ -5,20 +5,10 @@
 React component that shows the last status of user.
 Add your own last seen status to your project.
 
-| elapsed time | status output example | props | default | 
-| :---: | :---: | :---: | :---: |
-| max last `nowLimiar` ms | online | now | `[online]` |
-| max same day | today at 00:00 | sameDay | `[today] [at] HH:mm` |
-| max 1 day ago | yesterday at 00:00 | lastDay | `[yesterday] [at] HH:mm` |
-| max 1 week ago | sunday at 00:00 | lastWeek | `dddd [at] HH:mm` |
-| before | 01/01/2018 at 00:00 | sameElse | `L [at] HH:mm` |
-
-
-## Auto Refresh
-The react-last-status makes auto refreshes automatically.
 
 ## Demo
 Lorem Ipsum...
+
 
 ## Usage
 
@@ -36,26 +26,52 @@ Add component with respective props:
 ```js
 <LastStatus timestamp={timestamp}/>
 ```
+
+
 ## Props
-### timestamp
-Lorem Ipsum...
-### locale
-Lorem Ipsum...
-### limiarOnline
-Lorem Ipsum...
-### online
-Lorem Ipsum...
-### today
-Lorem Ipsum...
-### yesterday
-Lorem Ipsum...
-### lastWeek
-Lorem Ipsum...
-### before
-Lorem Ipsum...
+
+| prop | description | 
+| :---: | :---: |
+| `now` | *output personalization* |
+| `sameDay` | *output personalization* |
+| `lastDay` | *output personalization* |
+| `lastWeek` | *output personalization* |
+| `sameElse` | *output personalization* |
+| `timestamp` | timestamp of last status |
+| `locale` | language |
+| `nowLimiar` | time elapsed to consider online |
+
+
+## Output Personalization
+
+| elapsed time | status output example | props | default | 
+| :---: | :---: | :---: | :---: |
+| max last `nowLimiar` ms | online | now | `[online]` |
+| max same day | today at 00:00 | sameDay | `[today] [at] HH:mm` |
+| max 1 day ago | yesterday at 00:00 | lastDay | `[yesterday] [at] HH:mm` |
+| max 1 week ago | sunday at 00:00 | lastWeek | `dddd [at] HH:mm` |
+| before | 01/01/2018 at 00:00 | sameElse | `L [at] HH:mm` |
+
+```js
+<LastStatus
+	timestamp={timestamp}
+	now={'[I am alive]'}
+	sameDay={'[last seen today at] HH:mm'}
+	lastDay={'[last seen yesterday at] HH:mm'}
+	lastWeek={'[last seen] dddd [at] HH:mm'}
+	sameElse={'[last seen] L [at] HH:mm'}/>
+```
+
+#### Escaping characters
+
+To escape characters in format strings, you can wrap the characters in square brackets.
+
+```js
+'[today at] HH:mm' //'today at 00:00'
+```
 
 ## Languages
-Set the language of component with `locale` props. 
+Set the language of component with `locale` prop. 
 
 ```js
 <LastStatus locale={'pt-BR'}/>
@@ -63,5 +79,8 @@ Set the language of component with `locale` props.
 
 | locale | language |
 | :---: | :---: |
-| es-US *default* | english |
-| pt-BR | portuguese (Brazil) |
+| en *(default)* | English (USA) |
+| pt-BR | Portuguese (Brazil) |
+
+## Auto Refresh
+The react-last-status makes auto refreshes automatically each 15.000ms.
