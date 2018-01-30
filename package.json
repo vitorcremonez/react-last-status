@@ -1,6 +1,7 @@
 {
   "name": "react-last-status",
-  "version": "0.0.17",
+  "description": "Last user status that shows the last time he was online.",
+  "version": "0.0.18",
   "private": false,
   "main": "lib/components/LastStatusProvider.js",
   "repository": {

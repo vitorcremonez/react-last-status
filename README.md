@@ -1,13 +1,15 @@
-## Hit Star on GitHub
-
-## React Last Status Component
+# React Last Status Component
 
 React component that shows the last status of user.
 Add your own last seen status to your project.
 
-<img src="https://i.imgur.com/OedBeJ3.png" />
-With full date visualization on title.
-<img src="https://i.imgur.com/CLhHQJf.png" />
+
+Last seen max 30.000 miliseconds ago:
+![Online](https://i.imgur.com/HP9M0og.png)
+Last seen max 1 week ago:
+![LastWeek](https://i.imgur.com/OedBeJ3.png)
+Mouse over component pop title with full date:
+![Title](https://i.imgur.com/CLhHQJf.png)
 
 ## Auto Refresh
 The react-last-status makes auto refreshes automatically each 15.000ms.
