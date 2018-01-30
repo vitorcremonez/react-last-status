@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import LastStatus from "./LastStatus";
+import LastStatusProvider from "./LastStatusProvider";
 import moment from 'moment';
 
 class App extends Component {
@@ -86,7 +87,7 @@ class App extends Component {
                 <h1>react-last-status</h1>
 
                 <h2 style={{color: "red"}}>
-                    <LastStatus
+                    <LastStatusProvider
                         timestamp={parseInt(this.state.timestamp)}
                         nowLimiar={this.state.nowLimiar}
                         refreshInterval={this.state.refreshInterval}

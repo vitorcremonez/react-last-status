@@ -1,10 +1,16 @@
-## This package is under development... Come back soon!
+## Hit Star on GitHub
 
 ## React Last Status Component
 
 React component that shows the last status of user.
 Add your own last seen status to your project.
 
+<img src="https://i.imgur.com/OedBeJ3.png" />
+With full date visualization on title.
+<img src="https://i.imgur.com/CLhHQJf.png" />
+
+## Auto Refresh
+The react-last-status makes auto refreshes automatically each 15.000ms.
 
 ## Demo
 Lorem Ipsum...
@@ -82,5 +88,3 @@ Set the language of component with `locale` prop.
 | en *(default)* | English (USA) |
 | pt-BR | Portuguese (Brazil) |
 
-## Auto Refresh
-The react-last-status makes auto refreshes automatically each 15.000ms.

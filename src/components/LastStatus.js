@@ -26,6 +26,7 @@ class LastStatus extends Component {
     render() {
         const timestamp = this.props.timestamp;
         return (
+
             <span title={ moment(timestamp).locale(this.props.locale).format('LLLL').toLowerCase() }>
                 {
                     moment(timestamp).locale(this.props.locale).calendar(null, {
