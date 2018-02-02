@@ -6,8 +6,10 @@ Add your own last seen status to your project.
 
 Last seen max 30.000 miliseconds ago:
 ![Online](https://i.imgur.com/HP9M0og.png)
+
 Last seen max 1 week ago:
 ![LastWeek](https://i.imgur.com/OedBeJ3.png)
+
 Mouse over component pop title with full date:
 ![Title](https://i.imgur.com/CLhHQJf.png)
 
